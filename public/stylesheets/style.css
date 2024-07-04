@@ -1,8 +1,90 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Times New Roman', serif;
+  box-sizing: border-box;
+  background-color: darkslategray;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.buttons {
+  font-size: 25px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 20px 50px;
+  border-radius: 25px;
+  border: none;
+  transition: 0.3s;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.3);
+  font-family: 'Times New Roman', serif;
+}
+
+.buttons:hover {
+  transition: 0.3s;
+  scale: 105%;
+  cursor: pointer;
+}
+
+.buttons:active {
+  scale: 100%;
+  box-shadow: none;
+  transition: 0s;
+}
+
+.header-text {
+  text-align: center;
+}
+
+.form-group {
+  padding: 30px;
+  display: grid;
+  gap: 15px;
+  width: 40%;
+}
+
+.input {
+  padding: 3px 10px;
+  width: calc(100% - 30px);
+  margin-top: 5px;
+  outline: none;
+  appearance: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.button {
+  padding: 5px 25px;
+  border-radius: 3px;
+  border: none;
+  width: fit-content;
+  transition: 0.3s;
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.3);
+  font-family: 'Times New Roman', serif;
+  font-size: 18px;
+}
+
+.button:hover {
+  transition: 0.3s;
+  scale: 103%;
+  cursor: pointer;
+}
+
+.button:active {
+  scale: 100%;
+  box-shadow: none;
+  transition: 0s;
 }
