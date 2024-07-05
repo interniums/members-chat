@@ -4,23 +4,11 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 var dotenv = require('dotenv')
-
-// connecting to a database
-dotenv.config()
-
-const mongoose = require('mongoose')
-mongoose.set('strictQuery', false)
-
-const mongodb = process.env.MONGODB_URI
-
-main().catch((err) => console.log(err))
-async function main() {
-  await mongoose.connect(mongodb)
-}
-
 var indexRouter = require('./routes/index')
+const connectDB = require('./db')
 
 var app = express()
+connectDB()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))

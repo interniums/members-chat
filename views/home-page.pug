@@ -1,7 +1,10 @@
 extend layout 
 
-block content 
-  h1.header-text Welcome to our members chat!
+block content
+  h1.header-text= title
+  div
+    h3.header-text #{users_count} - users already registred.
+    h3.header-text #{messages_count} - messages sent. 
     div.buttons-container
       a(href='/sign-up')
         button.buttons Sign-up

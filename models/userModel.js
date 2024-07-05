@@ -1,12 +1,11 @@
 const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema
-
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
     maxlength: 16,
+    unique: true,
   },
   fullName: {
     type: String,
@@ -14,9 +13,9 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true,
-    maxlength: 24,
+    maxlength: 99,
   },
-  permisson: {
+  permission: {
     type: String,
     required: true,
   },
