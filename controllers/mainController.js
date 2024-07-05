@@ -74,3 +74,11 @@ exports.sign_up_post = [
     }
   }),
 ]
+
+exports.sign_in_get = asyncHandler(async (req, res, next) => {
+  res.render('sign-in-form', {
+    errors: [],
+  })
+})
+
+exports.sign_in_post = []
