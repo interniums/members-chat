@@ -94,3 +94,42 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+.logged-container {
+  display: flex;
+  gap: 15px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  align-items: center;
+}
+
+.logged-user {
+  color: rgb(19, 174, 19);
+}
+
+.logout-button {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  border: none;
+  height: max-content;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s;
+  font-family: 'Times New Roman', serif;
+  border-radius: 10px;
+}
+
+.logout-button:hover {
+  scale: 105%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.logout-button:active {
+  scale: 100%;
+  transition: 0s;
+  box-shadow: none;
+}

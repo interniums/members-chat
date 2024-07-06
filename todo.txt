@@ -1,0 +1,7 @@
+1. Sign-in
+2. Sign-up
+3. Display user
+4. Chat
+5. Get membership
+6. If signed chat, if not buttons
+7. Logout
