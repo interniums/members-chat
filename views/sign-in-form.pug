@@ -3,16 +3,16 @@ extends layout
 block content
   h1.header-text Sign-in form
   div.sign-up-container
-    form.form-container(method='POST')
+    form.form-container(method='POST', action='/sign-in')
       div.form-group
         div
           div
             lable(for='username_in') Username: 
-          input#username_in.input(type='text', placeholder='...', required, name='username_in')
+          input#username_in.input(type='text', placeholder='...', required, name='username')
         div
           div 
             lable(for='password_in') Password:
-          input#password_in.input(type='text', placeholder='...', required, name='password_in')
+          input#password_in.input(type='password', placeholder='...', required, name='password')
         button.button(type='submit') Submit
   div
     if errors.length > 0 

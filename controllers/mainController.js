@@ -4,6 +4,7 @@ const Message = require('../models/messageModel')
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
+require('connect-flash')
 
 exports.index = asyncHandler(async (req, res, next) => {
   const [allUsers, allMessages] = await Promise.all([
@@ -15,6 +16,7 @@ exports.index = asyncHandler(async (req, res, next) => {
     title: 'Wellcome to out members only chat!',
     users_count: allUsers,
     messages_count: allMessages,
+    user: req.user,
   })
 })
 
@@ -60,8 +62,7 @@ exports.sign_up_post = [
         errors: errors.errors,
       })
     } else {
-      const salt = await bcrypt.genSalt(10)
-      const hashedPassword = await bcrypt.hash(password_up, salt)
+      const hashedPassword = await bcrypt.hash(password_up, 10)
 
       const user = new User({
         username: username_up,
@@ -81,4 +82,8 @@ exports.sign_in_get = asyncHandler(async (req, res, next) => {
   })
 })
 
-exports.sign_in_post = []
+exports.sign_in_post = passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/sign-in',
+  failureMessage: true,
+})
