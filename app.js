@@ -7,6 +7,7 @@ var passport = require('passport')
 var indexRouter = require('./routes/index')
 var connectDB = require('./config/db')
 var sessionMiddleware = require('./config/session')
+var helmet = require('helmet')
 require('./config/passport')
 
 var app = express()
@@ -26,6 +27,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/', indexRouter)
+app.use(helmet())
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

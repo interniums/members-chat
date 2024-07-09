@@ -11,4 +11,12 @@ router.post('/sign-up', mainController.sign_up_post)
 router.get('/sign-in', mainController.sign_in_get)
 router.post('/sign-in', mainController.sign_in_post)
 
+router.get('/logout', mainController.logout)
+
+router.get('/membership', mainController.membership)
+
+router.post('/', mainController.message)
+
+router.get('/messages/:id/delete', mainController.delete_message)
+
 module.exports = router

@@ -1,9 +1,10 @@
 body {
-  padding: 50px;
+  padding: 10px;
   font-family: 'Times New Roman', serif;
   box-sizing: border-box;
   background-color: darkslategray;
   color: rgba(255, 255, 255, 0.8);
+  margin: 0;
 }
 
 a {
@@ -28,6 +29,7 @@ a {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
   background-color: rgba(255, 255, 255, 0.3);
   font-family: 'Times New Roman', serif;
+  margin-bottom: 20px;
 }
 
 .buttons:hover {
@@ -96,8 +98,9 @@ a {
 }
 
 .logged-container {
-  display: flex;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
   position: absolute;
   top: 15px;
   right: 15px;
@@ -120,6 +123,7 @@ a {
   transition: 0.3s;
   font-family: 'Times New Roman', serif;
   border-radius: 10px;
+  width: 100%;
 }
 
 .logout-button:hover {
@@ -132,4 +136,99 @@ a {
   scale: 100%;
   transition: 0s;
   box-shadow: none;
+}
+
+.chat-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat {
+  width: 500px;
+  height: 330px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 10px 20px;
+  border-radius: 25px;
+}
+
+.messages {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.messages::-webkit-scrollbar {
+  display: none;
+}
+
+.message-container {
+  display: grid;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  margin: 10px 0px;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+.h3 {
+  margin: 0px 5px;
+  color: rgb(15, 15, 110);
+}
+
+.p {
+  margin: 5px;
+  font-size: 14px;
+}
+
+.create-message-container {
+  margin: 6px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.send-input {
+  padding: 2px 10px;
+  width: 60%;
+  outline: none;
+  appearance: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.send-button {
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.send-button:hover {
+  scale: 105%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.send-button:active {
+  transition: 0s;
+  scale: 100%;
+}
+
+.delete-message {
+  width: 30%;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 3px;
+}
+
+.delete-message:hover {
+  cursor: pointer;
 }

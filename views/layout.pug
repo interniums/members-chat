@@ -7,7 +7,19 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     div.logged-container 
-      h2.logged-user Logged user: 
-      button.logout-button LOG OUT
+      if user 
+        h2.logged-user Logged user: #{user.username}
+        a(href='/logout')
+          button.logout-button LOG OUT
+        div 
+          if user.permission == 'not_a_member'
+            a(href="/membership")
+              button.logout-button Get membership
+          else
+            h2.logged-user You are a member. 
+      else 
+        h2.logged-user User not logged.
+      if user.admin 
+        h2.logged-user You are an admin. 
     block content
     

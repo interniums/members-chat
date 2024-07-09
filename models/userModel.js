@@ -19,6 +19,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  admin: {
+    type: String,
+  },
 })
 
 UserSchema.virtual('url').get(function () {

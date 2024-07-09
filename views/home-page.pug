@@ -7,9 +7,28 @@ block content
     h1.header-text Wellcome back!   
   div
     h3.header-text #{users_count} - users already registred.
-    h3.header-text #{messages_count} - messages sent. 
+    h3.header-text #{messages_count} - messages sent.
+  if !user  
     div.buttons-container
       a(href='/sign-up')
         button.buttons Sign-up
       a(href='/sign-in') 
         button().buttons Sign-in
+  else 
+    div.chat-container
+      div.chat
+        div.messages
+          if messages
+            each message in messages 
+              div.message-container
+                div
+                  h3.h3 #{message.name}:
+                  p.p #{message.text} 
+                  p.p #{message.date}
+                if user.admin
+                  a(href=`/messages/${message._id}/delete`)
+                    button.delete-message delete message
+        if user.permission == 'member' 
+          form(method='POST', action='/').create-message-container
+            input(type='text', placeholder='Write your message here...', name='message', minLength='1', required).send-input
+            button(type='submit').send-button Send

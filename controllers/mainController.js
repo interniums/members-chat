@@ -4,6 +4,7 @@ const Message = require('../models/messageModel')
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
+const { getAllMessages } = require('../utils/getMessages')
 require('connect-flash')
 
 exports.index = asyncHandler(async (req, res, next) => {
@@ -11,18 +12,21 @@ exports.index = asyncHandler(async (req, res, next) => {
     User.countDocuments({}).exec(),
     Message.countDocuments({}).exec(),
   ])
+  const messages = await getAllMessages()
 
   res.render('home-page', {
     title: 'Wellcome to out members only chat!',
     users_count: allUsers,
     messages_count: allMessages,
     user: req.user,
+    messages: messages,
   })
 })
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
   res.render('sign-up-form', {
     errors: [],
+    user: req.user,
   })
 })
 
@@ -60,6 +64,7 @@ exports.sign_up_post = [
     if (!errors.isEmpty()) {
       res.render('sign-up-form', {
         errors: errors.errors,
+        user: req.user,
       })
     } else {
       const hashedPassword = await bcrypt.hash(password_up, 10)
@@ -79,6 +84,7 @@ exports.sign_up_post = [
 exports.sign_in_get = asyncHandler(async (req, res, next) => {
   res.render('sign-in-form', {
     errors: [],
+    user: req.user,
   })
 })
 
@@ -86,4 +92,36 @@ exports.sign_in_post = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/sign-in',
   failureMessage: true,
+})
+
+exports.logout = asyncHandler(async (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500)
+    }
+    res.redirect('/')
+  })
+})
+
+exports.membership = asyncHandler(async (req, res, next) => {
+  const user = await User.findOne({ username: req.user.username })
+  user.permission = 'member'
+  await user.save()
+  res.redirect('/')
+})
+
+exports.message = asyncHandler(async (req, res, next) => {
+  const message = new Message({
+    text: req.body.message,
+    author: req.user._id,
+    name: req.user.username,
+  })
+
+  await message.save()
+  res.redirect('/')
+})
+
+exports.delete_message = asyncHandler(async (req, res, next) => {
+  const message = await Message.findByIdAndDelete(req.params.id)
+  res.redirect('/')
 })
