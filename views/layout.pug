@@ -11,6 +11,8 @@ html(lang='en')
         h2.logged-user Logged user: #{user.username}
         a(href='/logout')
           button.logout-button LOG OUT
+        if user.admin == true 
+          h2.logged-user You are an admin.
         div 
           if user.permission == 'not_a_member'
             a(href="/membership")
@@ -18,8 +20,6 @@ html(lang='en')
           else
             h2.logged-user You are a member. 
       else 
-        h2.logged-user User not logged.
-      if user.admin 
-        h2.logged-user You are an admin. 
+        h2.logged-user User not logged. 
     block content
     

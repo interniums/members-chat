@@ -8,7 +8,10 @@ var indexRouter = require('./routes/index')
 var connectDB = require('./config/db')
 var sessionMiddleware = require('./config/session')
 var helmet = require('helmet')
+var dotenv = require('dotenv')
 require('./config/passport')
+
+dotenv.config()
 
 var app = express()
 connectDB()

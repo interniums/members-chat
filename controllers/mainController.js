@@ -73,6 +73,7 @@ exports.sign_up_post = [
         username: username_up,
         password: hashedPassword,
         permission: 'not_a_member',
+        admin: false,
       })
 
       await user.save()
